@@ -3,13 +3,13 @@
     "Transform": "AWS::Serverless-2016-10-31",
 	"Description": "SNS Topic for Billing Alerts",
 	"Parameters": {
+        "Region": {
+			"Type": "String",
+			"Description": "AWS account region"
+		},
 		"AccountID": {
 			"Type": "String",
 			"Description": "AWS account ID"
-		},
-		"Region": {
-			"Type": "String",
-			"Description": "AWS account region"
 		},
 		"SNSTopicName": {
 			"Type": "String",
