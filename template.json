@@ -1,0 +1,65 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "SNS Topic for Billing Alerts",
+	"Parameters": {
+		"AccountID": {
+			"Type": "String",
+			"Description": "AWS account ID"
+		},
+		"Region": {
+			"Type": "String",
+			"Description": "AWS account region"
+		},
+		"SNSTopicName": {
+			"Type": "String",
+			"Description": "AWS account region"
+		},
+		"Email": {
+			"Type": "String",
+			"Description": "Email address to receive alarms per email"
+		}
+	},
+	"Resources": {
+		"BillingAlertTopic": {
+			"Type": "AWS::SNS::Topic",
+			"Properties": {
+				"TopicName": {
+					"Fn::Join": [
+						"-",
+						[
+							{
+								"Ref": "AccountID"
+							},
+							{
+								"Ref": "Region"
+							},
+							{
+								"Ref": "SNSTopicName"
+							}
+						]
+					]
+				}
+			}
+		},
+		"AlarmSubscriberEmail": {
+			"Type": "AWS::SNS::Subscription",
+			"Properties": {
+				"Endpoint": {
+					"Ref": "Email"
+				},
+				"Protocol": "email",
+				"TopicArn": {
+					"Ref": "BillingAlertTopic"
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"MyTopicArn": {
+			"Description": "Arn of Created SNS Topic",
+            "Value": {
+                "Ref": "BillingAlertTopic"
+            }
+		}
+	}
+}

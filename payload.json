@@ -1,0 +1,20 @@
+{
+    "Parameters": [
+        {
+            "ParameterKey": "AccountId",
+            "ParameterValue": "345814638087"
+        },
+        {
+            "ParameterKey": "Region",
+            "ParameterValue": "ap-south-1"
+        },
+        {
+            "ParameterKey": "SNSTopicName",
+            "ParameterValue": "sns-estimated-budget-notification"
+        },
+        {
+            "ParameterKey": "Email",
+            "ParameterValue": "imrisi91@gmail.com"
+        }
+    ]
+}
