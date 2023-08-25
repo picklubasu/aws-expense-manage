@@ -9,6 +9,7 @@
 		},
 		"AccountID": {
 			"Type": "String",
+            "Default": "345814638087",
 			"Description": "AWS account ID"
 		},
 		"SNSTopicName": {
