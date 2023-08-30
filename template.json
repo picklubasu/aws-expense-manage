@@ -66,19 +66,14 @@
 		"BasicAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": {
-					"Fn::Join": [
-						"",
-						[
-							"Billing Alert for $",
-							[
-								"EstimatedCharges",
-								"AlarmRange",
-								"Basic"
-							]
-						]
+				"AlarmDescription": [
+					"Billing Alert for $",
+					[
+						"EstimatedCharges",
+						"AlarmRange",
+						"Basic"
 					]
-				},
+				],
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
@@ -105,19 +100,14 @@
 		"ThresholdAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": {
-					"Fn::Join": [
-						"",
-						[
-							"Billing Alert for $",
-							[
-								"EstimatedCharges",
-								"AlarmRange",
-								"Threshold"
-							]
-						]
+				"AlarmDescription": [
+					"Billing Alert for $",
+					[
+						"EstimatedCharges",
+						"AlarmRange",
+						"Threshold"
 					]
-				},
+				],
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
@@ -144,19 +134,14 @@
 		"ExhaustedAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": {
-					"Fn::Join": [
-						"",
-						[
-							"Billing Alert for $",
-							[
-								"EstimatedCharges",
-								"AlarmRange",
-								"Exhausted"
-							]
-						]
+				"AlarmDescription": [
+					"Billing Alert for $",
+					[
+						"EstimatedCharges",
+						"AlarmRange",
+						"Exhausted"
 					]
-				},
+				],
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
