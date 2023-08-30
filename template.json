@@ -67,11 +67,14 @@
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
 				"AlarmDescription": [
-					"Billing Alert for $",
+					"",
 					[
-						"EstimatedCharges",
-						"AlarmRange",
-						"Basic"
+						"Billing Alert for $",
+						[
+							"EstimatedCharges",
+							"AlarmRange",
+							"Basic"
+						]
 					]
 				],
 				"AlarmActions": [
@@ -101,11 +104,14 @@
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
 				"AlarmDescription": [
-					"Billing Alert for $",
+					"",
 					[
-						"EstimatedCharges",
-						"AlarmRange",
-						"Threshold"
+						"Billing Alert for $",
+						[
+							"EstimatedCharges",
+							"AlarmRange",
+							"Threshold"
+						]
 					]
 				],
 				"AlarmActions": [
@@ -135,11 +141,14 @@
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
 				"AlarmDescription": [
-					"Billing Alert for $",
+					"",
 					[
-						"EstimatedCharges",
-						"AlarmRange",
-						"Exhausted"
+						"Billing Alert for $",
+						[
+							"EstimatedCharges",
+							"AlarmRange",
+							"Exhausted"
+						]
 					]
 				],
 				"AlarmActions": [
