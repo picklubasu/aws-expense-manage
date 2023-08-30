@@ -67,9 +67,11 @@
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
 				"AlarmDescription": "Basic",
-				"AlarmActions": {
-					"Ref": "BillingAlertTopic"
-				},
+				"AlarmActions": [
+					{
+						"Ref": "BillingAlertTopic"
+					}
+				],
 				"ComparisonOperator": "GreaterThanThreshold",
 				"Dimensions": [
 					{
