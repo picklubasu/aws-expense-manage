@@ -82,7 +82,8 @@
         		"Namespace": "AWS/Billing",
         		"Period": 21600,
         		"TreatMissingData": "breaching",
-        		"Statistic": "Maximum"
+        		"Statistic": "Maximum",
+				"Threshold": 5
 			}
 		}
 	},
