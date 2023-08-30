@@ -20,6 +20,15 @@
 			"Description": "Email address to receive alarms per email"
 		}
 	},
+	"Mappings": {
+		"EstimatedCharges": {
+			"AlarmRange": {
+				"Basic": 5,
+				"Threshold": 10,
+				"Exhausted": 15
+			}
+		}
+	},
 	"Resources": {
 		"BillingAlertTopic": {
 			"Type": "AWS::SNS::Topic",
@@ -52,6 +61,123 @@
 				"TopicArn": {
 					"Ref": "BillingAlertTopic"
 				}
+			}
+		},
+		"BasicAlarm": {
+			"Type": "AWS::CloudWatch::Alarm",
+			"Properties": {
+				"AlarmDescription": {
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							[
+								"EstimatedCharges",
+								"AlarmRange",
+								"Basic"
+							]
+						]
+					]
+				},
+				"AlarmActions": [
+					"BillingAlertTopic"
+				],
+				"ComparisonOperator": "GreaterThanThreshold",
+				"Dimensions": [
+					{
+						"Name": "Currency",
+					  	"Value": "USD"
+					}
+				],
+				"EvaluationPeriods": 1,
+        		"MetricName": "EstimatedCharges",
+        		"Namespace": "AWS/Billing",
+        		"Period": 21600,
+        		"TreatMissingData": "breaching",
+        		"Statistic": "Maximum",
+        		"Threshold": [
+          			"EstimatedCharges",
+          			"AlarmRange",
+          			"Basic"
+        		]
+			}
+		},
+		"ThresholdAlarm": {
+			"Type": "AWS::CloudWatch::Alarm",
+			"Properties": {
+				"AlarmDescription": {
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							[
+								"EstimatedCharges",
+								"AlarmRange",
+								"Threshold"
+							]
+						]
+					]
+				},
+				"AlarmActions": [
+					"BillingAlertTopic"
+				],
+				"ComparisonOperator": "GreaterThanThreshold",
+				"Dimensions": [
+					{
+						"Name": "Currency",
+					  	"Value": "USD"
+					}
+				],
+				"EvaluationPeriods": 1,
+        		"MetricName": "EstimatedCharges",
+        		"Namespace": "AWS/Billing",
+        		"Period": 21600,
+        		"TreatMissingData": "breaching",
+        		"Statistic": "Maximum",
+        		"Threshold": [
+          			"EstimatedCharges",
+          			"AlarmRange",
+          			"Threshold"
+        		]
+			}
+		},
+		"ExhaustedAlarm": {
+			"Type": "AWS::CloudWatch::Alarm",
+			"Properties": {
+				"AlarmDescription": {
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							[
+								"EstimatedCharges",
+								"AlarmRange",
+								"Exhausted"
+							]
+						]
+					]
+				},
+				"AlarmActions": [
+					"BillingAlertTopic"
+				],
+				"ComparisonOperator": "GreaterThanThreshold",
+				"Dimensions": [
+					{
+						"Name": "Currency",
+					  	"Value": "USD"
+					}
+				],
+				"EvaluationPeriods": 1,
+        		"MetricName": "EstimatedCharges",
+        		"Namespace": "AWS/Billing",
+        		"Period": 21600,
+        		"TreatMissingData": "breaching",
+        		"Statistic": "Maximum",
+        		"Threshold": [
+          			"EstimatedCharges",
+          			"AlarmRange",
+          			"Exhausted"
+        		]
 			}
 		}
 	},
