@@ -23,9 +23,9 @@
 	"Mappings": {
 		"EstimatedCharges": {
 			"AlarmRange": {
-				"Basic": 5,
-				"Threshold": 10,
-				"Exhausted": 15
+				"Basic": "5",
+				"Threshold": "10",
+				"Exhausted": "15"
 			}
 		}
 	},
@@ -66,17 +66,7 @@
 		"BasicAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": [
-					"",
-					[
-						"Billing Alert for $",
-						[
-							"EstimatedCharges",
-							"AlarmRange",
-							"Basic"
-						]
-					]
-				],
+				"AlarmDescription": "Basic",
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
@@ -103,17 +93,7 @@
 		"ThresholdAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": [
-					"",
-					[
-						"Billing Alert for $",
-						[
-							"EstimatedCharges",
-							"AlarmRange",
-							"Threshold"
-						]
-					]
-				],
+				"AlarmDescription": "Threshold",
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
@@ -140,17 +120,7 @@
 		"ExhaustedAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": [
-					"",
-					[
-						"Billing Alert for $",
-						[
-							"EstimatedCharges",
-							"AlarmRange",
-							"Exhausted"
-						]
-					]
-				],
+				"AlarmDescription": "Exhausted",
 				"AlarmActions": [
 					"BillingAlertTopic"
 				],
