@@ -23,7 +23,7 @@
 	"Mappings": {
 		"EstimatedCharges": {
 			"AlarmRange": {
-				"Basic": "5",
+				"Basic": "25",
 				"Threshold": "10",
 				"Exhausted": "15"
 			}
@@ -66,7 +66,13 @@
 		"BasicAlarm": {
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
-				"AlarmDescription": "Basic",
+				"AlarmDescription": {
+					"Fn::FindInMap": [
+						"EstimatedCharges",
+						"AlarmRange",
+						"Basic"
+					]
+				},
 				"AlarmActions": [
 					{
 						"Ref": "BillingAlertTopic"
