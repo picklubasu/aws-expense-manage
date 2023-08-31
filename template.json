@@ -23,9 +23,9 @@
 	"Mappings": {
 		"EstimatedCharges": {
 			"AlarmRange": {
-				"Basic": "25",
-				"Threshold": "10",
-				"Exhausted": "15"
+				"Basic": "10",
+				"Threshold": "20",
+				"Exhausted": "30"
 			}
 		}
 	},
