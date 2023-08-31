@@ -67,10 +67,18 @@
 			"Type": "AWS::CloudWatch::Alarm",
 			"Properties": {
 				"AlarmDescription": {
-					"Fn::FindInMap": [
-						"EstimatedCharges",
-						"AlarmRange",
-						"Basic"
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							{
+								"Fn::FindInMap": [
+									"EstimatedCharges",
+									"AlarmRange",
+									"Basic"
+								]
+							}
+						]
 					]
 				},
 				"AlarmActions": [
@@ -91,7 +99,13 @@
         		"Period": 21600,
         		"TreatMissingData": "breaching",
         		"Statistic": "Maximum",
-				"Threshold": "5"
+				"Threshold": {
+					"Fn::FindInMap": [
+						"EstimatedCharges",
+						"AlarmRange",
+						"Basic"
+					]
+				}
 			}
 		}
 	},
