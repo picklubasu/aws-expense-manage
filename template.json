@@ -107,6 +107,96 @@
 					]
 				}
 			}
+		},
+		"ThresholdAlarm": {
+			"Type": "AWS::CloudWatch::Alarm",
+			"Properties": {
+				"AlarmDescription": {
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							{
+								"Fn::FindInMap": [
+									"EstimatedCharges",
+									"AlarmRange",
+									"Threshold"
+								]
+							}
+						]
+					]
+				},
+				"AlarmActions": [
+					{
+						"Ref": "BillingAlertTopic"
+					}
+				],
+				"ComparisonOperator": "GreaterThanThreshold",
+				"Dimensions": [
+					{
+						"Name": "Currency",
+					  	"Value": "USD"
+					}
+				],
+				"EvaluationPeriods": 1,
+        		"MetricName": "EstimatedCharges",
+        		"Namespace": "AWS/Billing",
+        		"Period": 21600,
+        		"TreatMissingData": "breaching",
+        		"Statistic": "Maximum",
+				"Threshold": {
+					"Fn::FindInMap": [
+						"EstimatedCharges",
+						"AlarmRange",
+						"Threshold"
+					]
+				}
+			}
+		},
+		"ExhaustedAlarm": {
+			"Type": "AWS::CloudWatch::Alarm",
+			"Properties": {
+				"AlarmDescription": {
+					"Fn::Join": [
+						"",
+						[
+							"Billing Alert for $",
+							{
+								"Fn::FindInMap": [
+									"EstimatedCharges",
+									"AlarmRange",
+									"Exhausted"
+								]
+							}
+						]
+					]
+				},
+				"AlarmActions": [
+					{
+						"Ref": "BillingAlertTopic"
+					}
+				],
+				"ComparisonOperator": "GreaterThanThreshold",
+				"Dimensions": [
+					{
+						"Name": "Currency",
+					  	"Value": "USD"
+					}
+				],
+				"EvaluationPeriods": 1,
+        		"MetricName": "EstimatedCharges",
+        		"Namespace": "AWS/Billing",
+        		"Period": 21600,
+        		"TreatMissingData": "breaching",
+        		"Statistic": "Maximum",
+				"Threshold": {
+					"Fn::FindInMap": [
+						"EstimatedCharges",
+						"AlarmRange",
+						"Exhausted"
+					]
+				}
+			}
 		}
 	},
 	"Outputs": {
